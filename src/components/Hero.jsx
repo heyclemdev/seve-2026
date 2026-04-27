@@ -17,9 +17,6 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-left">
-        <div className="hero-tag reveal" ref={el => revealRefs.current[0] = el}>
-          Restaurant · Marseille 6e
-        </div>
         <h1 className="hero-title reveal" ref={el => revealRefs.current[1] = el}>
           La<br /><em>cuisine</em><br />vivante
         </h1>
@@ -53,7 +50,13 @@ export default function Hero() {
             <path d="M240 220 Q255 215 262 225" fill="none" stroke="#EDE7DC" strokeWidth="6" strokeLinecap="round" opacity="0.5"/>
           </svg>
         </div>
-        <div className="hero-scroll-hint">Défiler</div>
+        <div className="hero-scroll-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" width="20" height="20">
+            <rect x="7" y="2" width="10" height="16" rx="5"/>
+            <line x1="12" y1="6" x2="12" y2="9"/>
+            <path d="M5 19l7 3 7-3"/>
+          </svg>
+        </div>
       </div>
     </section>
   )
