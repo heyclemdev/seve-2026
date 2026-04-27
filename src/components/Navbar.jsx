@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -15,7 +16,7 @@ export default function Navbar() {
       <div className="nav-logo">Sève</div>
       <div className="nav-links">
         <a href="#concept">Le restaurant</a>
-        <a href="#menu">Menu</a>
+        <Link to="/menu">Menu</Link>
         <a href="#notre-histoire">Notre histoire</a>
         <a href="#reservation" className="nav-cta">
           Réserver une table

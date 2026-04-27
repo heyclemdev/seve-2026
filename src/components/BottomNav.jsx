@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import './BottomNav.css'
 
 const IconHome = () => (
@@ -32,20 +33,18 @@ const IconCalendar = () => (
   </svg>
 )
 
-const navItems = [
-  { id: 'accueil', label: 'Accueil', href: '#', Icon: IconHome },
-  { id: 'menu',    label: 'Menu',    href: '#menu', Icon: IconMenu },
-  { id: 'notre-histoire', label: 'Histoire', href: '#notre-histoire', Icon: IconLeaf },
-  { id: 'reservation',   label: 'Réserver',  href: '#reservation', Icon: IconCalendar },
-]
-
 export default function BottomNav() {
   const [active, setActive] = useState('accueil')
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const isMenuPage = location.pathname === '/menu'
 
   useEffect(() => {
+    if (isMenuPage) { setActive('menu'); return }
+
     const targets = [
       { el: document.querySelector('.hero'), id: 'accueil' },
-      { el: document.getElementById('menu'), id: 'menu' },
       { el: document.getElementById('notre-histoire'), id: 'notre-histoire' },
       { el: document.getElementById('reservation'), id: 'reservation' },
     ].filter(t => t.el)
@@ -61,22 +60,42 @@ export default function BottomNav() {
       },
       { threshold: 0.35 }
     )
-
     targets.forEach(t => observer.observe(t.el))
     return () => observer.disconnect()
-  }, [])
+  }, [isMenuPage])
+
+  const handleNav = (id) => {
+    if (id === 'menu') { navigate('/menu'); return }
+    if (isMenuPage) {
+      navigate('/')
+      setTimeout(() => {
+        if (id !== 'accueil') document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+      return
+    }
+    if (id === 'accueil') window.scrollTo({ top: 0, behavior: 'smooth' })
+    else document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setActive(id)
+  }
+
+  const navItems = [
+    { id: 'accueil', label: 'Accueil', Icon: IconHome },
+    { id: 'menu',    label: 'Menu',    Icon: IconMenu },
+    { id: 'notre-histoire', label: 'Histoire', Icon: IconLeaf },
+    { id: 'reservation',   label: 'Réserver',  Icon: IconCalendar },
+  ]
 
   return (
     <nav className="bottom-nav">
-      {navItems.map(({ id, label, href, Icon }) => (
-        <a
+      {navItems.map(({ id, label, Icon }) => (
+        <button
           key={id}
-          href={href}
           className={`bottom-nav-item ${active === id ? 'active' : ''}`}
+          onClick={() => handleNav(id)}
         >
           <span className="bottom-nav-icon"><Icon /></span>
           <span className="bottom-nav-label">{label}</span>
-        </a>
+        </button>
       ))}
     </nav>
   )

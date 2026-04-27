@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import './Menu.css'
 
 const menuData = {
@@ -51,6 +52,8 @@ export default function Menu() {
           ))}
         </div>
       </div>
+
+      <Link to="/menu" className="menu-see-all">Voir la carte complète →</Link>
 
       <div className="menu-grid">
         {menuData[activeTab].map((item, i) => (

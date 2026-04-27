@@ -8,6 +8,20 @@
   font-size: clamp(2.5rem, 4.5vw, 3.8rem);
   font-weight: 300; line-height: 1.1;
 }
+.menu-see-all {
+  display: none;
+}
+@media (max-width: 900px) {
+  .menu-see-all {
+    display: block;
+    padding: 0 1.5rem 1.2rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--sage-dark);
+    letter-spacing: 0.04em;
+  }
+}
+
 .menu-tabs { display: flex; gap: 0.5rem; }
 .tab {
   padding: 0.5rem 1.2rem;
