@@ -69,7 +69,9 @@ export default function MenuPage() {
       </div>
 
       <div className="menu-page-cta">
-        <a href="/#reservation" className="menu-page-reserve">Réserver une table</a>
+        <button className="menu-page-reserve" onClick={() => { navigate('/'); setTimeout(() => document.getElementById('reservation')?.scrollIntoView({ behavior: 'smooth' }), 100) }}>
+          Réserver une table
+        </button>
       </div>
     </div>
   )

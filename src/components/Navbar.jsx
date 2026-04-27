@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
+const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -15,12 +17,12 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-logo">Sève</div>
       <div className="nav-links">
-        <a href="#concept">Le restaurant</a>
+        <button onClick={() => scrollTo('concept')}>Le restaurant</button>
         <Link to="/menu">Menu</Link>
-        <a href="#notre-histoire">Notre histoire</a>
-        <a href="#reservation" className="nav-cta">
+        <button onClick={() => scrollTo('notre-histoire')}>Notre histoire</button>
+        <button onClick={() => scrollTo('reservation')} className="nav-cta">
           Réserver une table
-        </a>
+        </button>
       </div>
     </nav>
   );

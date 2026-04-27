@@ -1,8 +1,12 @@
 import { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Hero.css'
+
+const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
 export default function Hero() {
   const revealRefs = useRef([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,8 +28,8 @@ export default function Hero() {
           Des produits de saison, des producteurs de confiance, une carte qui évolue chaque semaine. La cuisine comme elle devrait toujours être.
         </p>
         <div className="hero-actions reveal" ref={el => revealRefs.current[3] = el}>
-          <a href="#reservation" className="btn-primary">Réserver une table</a>
-          <a href="#menu" className="btn-ghost">Voir le menu <span>↓</span></a>
+          <button className="btn-primary" onClick={() => scrollTo('reservation')}>Réserver une table</button>
+          <button className="btn-ghost" onClick={() => navigate('/menu')}>Voir le menu <span>↓</span></button>
         </div>
       </div>
 
