@@ -1,0 +1,147 @@
+.histoire {
+  position: relative;
+  min-height: 680px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+/* ── Image de fond ── */
+.histoire-img-wrap {
+  position: absolute;
+  inset: 0;
+}
+.histoire-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: saturate(0.85);
+}
+.histoire-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(20, 24, 20, 0.92) 0%,
+    rgba(20, 24, 20, 0.6) 50%,
+    rgba(20, 24, 20, 0.2) 100%
+  );
+}
+
+/* ── Contenu ── */
+.histoire-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 5rem 4rem;
+  color: var(--cream);
+}
+
+.histoire-label {
+  color: rgba(247, 243, 238, 0.6) !important;
+}
+.histoire-label::before {
+  background: rgba(247, 243, 238, 0.6) !important;
+}
+
+.histoire-content h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 3rem;
+}
+.histoire-content h2 em {
+  font-style: normal;
+  color: var(--sage2);
+}
+
+/* ── Colonnes de texte ── */
+.histoire-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+.histoire-col p {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: rgba(247, 243, 238, 0.72);
+  margin-bottom: 1.2rem;
+  font-weight: 300;
+}
+
+blockquote {
+  border-left: 2px solid var(--sage);
+  padding-left: 1.8rem;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(247, 243, 238, 0.88);
+}
+blockquote cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-family: var(--font-sans);
+  letter-spacing: 0.08em;
+  color: var(--sage);
+}
+
+/* ── Stats ── */
+.histoire-stats {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 2.5rem;
+}
+.histoire-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-right: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  margin-right: 2rem;
+}
+.histoire-stat:last-child {
+  border-right: none;
+  margin-right: 0;
+}
+.stat-num {
+  font-family: var(--font-sans);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 238, 0.45);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .histoire-content {
+    padding: 3rem 1.5rem;
+  }
+  .histoire-body {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .histoire-stats {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .histoire-stat {
+    border-right: none;
+    margin-right: 0;
+    min-width: 40%;
+  }
+}

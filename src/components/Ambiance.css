@@ -1,0 +1,33 @@
+.ambiance {
+  display: flex; height: 380px; overflow: hidden;
+}
+.ambiance-panel {
+  flex: 1; position: relative; overflow: hidden;
+  cursor: pointer;
+  transition: flex 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.ambiance-panel:hover { flex: 2; }
+.ambiance-panel .bg {
+  position: absolute; inset: -20px;
+  transition: transform 0.5s;
+}
+.ambiance-panel:hover .bg { transform: scale(1.05); }
+.bg-1 { background: linear-gradient(135deg, #b5cba9 0%, #7a9b7e 100%); }
+.bg-2 { background: linear-gradient(135deg, #e8d8c4 0%, #c4a882 100%); }
+.bg-3 { background: linear-gradient(135deg, #c4714a 0%, #a05535 100%); }
+.bg-4 { background: linear-gradient(135deg, #2d4a32 0%, #1e2420 100%); }
+.ambiance-label {
+  position: absolute; bottom: 2rem; left: 2rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  opacity: 0; transform: translateY(8px);
+  transition: all 0.3s;
+}
+.ambiance-panel:hover .ambiance-label {
+  opacity: 1; transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .ambiance { height: 200px; }
+}
